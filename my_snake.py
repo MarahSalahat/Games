@@ -46,6 +46,14 @@ class Snake:
         for block in self.body:
             pygame.draw.circle(window, PURPLE, (block[0]+BLOCK_SIZE//2, block[1]+BLOCK_SIZE//2), BLOCK_SIZE//2)
 
+    def begin(self):
+        font = pygame.font.SysFont("comicsansms", 48)
+        text = font.render('Eat more.Grow more ;)', True, YELLOW)
+        text_rect = text.get_rect(center=(WIDTH/2, HEIGHT/2))
+        window.blit(text, text_rect)
+        pygame.display.update()
+        time.sleep(2)
+    
 
     def game_over(self):
         font = pygame.font.SysFont("comicsansms", 50)
@@ -66,6 +74,7 @@ class Food:
 def game_loop():
     snake = Snake()
     food = Food()
+    snake.begin()
 
     while True:
         for event in pygame.event.get():
